@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.educandoweb</groupId>
-	<artifactId>course</artifactId>
+	<artifactId>course-dev</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>course</name>
+	<name>course-dev</name>
 	<description>Projeto de gerenciamento de Alunos</description>
 	<properties>
 		<java.version>11</java.version>
