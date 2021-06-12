@@ -9,30 +9,30 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.educandoweb.course.entities.User;
-import br.com.educandoweb.course.services.UserService;
+import br.com.educandoweb.course.entities.Order;
+import br.com.educandoweb.course.services.OrderService;
 
 @RestController
-@RequestMapping(value = "/users")
-public class UserResource {
+@RequestMapping(value = "/orders")
+public class OrderResource {
 
 	// DEPENDENCIA PARA O SERVICE
 		@Autowired
-		private UserService service;
+		private OrderService service;
 		 // AO INVES DE USAR O REPOSITORY USAR O SERVICE
 		
-	// Retorna todos os usuarios para a pagina
-	// localhost:8080/users
+	// Retorna todos os pedidos para a pagina
+	// localhost:8080/Orders
 	@GetMapping
-	public ResponseEntity<List<User>> findAll(){
+	public ResponseEntity<List<Order>> findAll(){
 		// PASSAR COMO PARAMETRO DA LISTA A CLASS SERVICE QUE IMPLEMENTA O REPOSITORIO
-		List<User> list = service.findAll();
+		List<Order> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<User> findById(@PathVariable Long id) {
-	User obj = service.findById(id);
+	public ResponseEntity<Order> findById(@PathVariable Long id) {
+	Order obj = service.findById(id);
 	return ResponseEntity.ok().body(obj); 
 }
 }
