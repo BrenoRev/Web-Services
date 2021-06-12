@@ -13,6 +13,8 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import br.com.educandoweb.course.entities.enums.OrderStatus;
+
 @Entity
 // DAR UM NOME PARA A TABELA
 @Table(name = "tb_order")
@@ -33,15 +35,35 @@ public class Order implements Serializable {
 	@JoinColumn(name = "client_id")
 	private User client;
 
+	private Integer orderStatus;
+	
 	public Order() {
 
 	}
 
-	public Order(Long id, Instant moment, User client) {
+	public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
 		super();
 		this.id = id;
 		this.moment = moment;
 		this.client = client;
+		setOrderStatus(orderStatus);
+	}
+
+	
+	/**
+	 * @return the orderStatus
+	 */
+	public OrderStatus getOrderStatus() {
+		return OrderStatus.valueOf(orderStatus);
+	}
+
+	/**
+	 * @param SETA UM VALOR INTEIRO QUE VAI SER CONVERTIDO PARA ENUM
+	 */
+	public void setOrderStatus(OrderStatus orderStatus) {
+		if(orderStatus != null) {
+		this.orderStatus = orderStatus.getCode();
+		}
 	}
 
 	/**
