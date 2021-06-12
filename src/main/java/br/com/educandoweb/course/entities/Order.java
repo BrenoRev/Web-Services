@@ -35,6 +35,7 @@ public class Order implements Serializable {
 	@JoinColumn(name = "client_id")
 	private User client;
 
+	// ENUM POR NUMERO
 	private Integer orderStatus;
 	
 	public Order() {
@@ -46,20 +47,18 @@ public class Order implements Serializable {
 		this.id = id;
 		this.moment = moment;
 		this.client = client;
+		
+		// ENUM POR NUMERO
 		setOrderStatus(orderStatus);
 	}
 
 	
-	/**
-	 * @return the orderStatus
-	 */
+	// ENUM POR NUMERO
 	public OrderStatus getOrderStatus() {
 		return OrderStatus.valueOf(orderStatus);
 	}
 
-	/**
-	 * @param SETA UM VALOR INTEIRO QUE VAI SER CONVERTIDO PARA ENUM
-	 */
+	// ENUM POR NUMERO
 	public void setOrderStatus(OrderStatus orderStatus) {
 		if(orderStatus != null) {
 		this.orderStatus = orderStatus.getCode();
