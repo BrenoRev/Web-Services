@@ -8,8 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name= "tb_category")
@@ -20,10 +22,11 @@ public class Category implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	
-	//@JsonIgnore
-	//@OneToMany(mappedBy = "categories")
-	@Transient
+
+	// USAR O ManyToMany(mappedBy = "xxx") PARA FAZER O LAÇO COM A OUTRA CLASSE
+	// UTILIZAR O MAPPEDBY COM O NOME DA INSTANCIAÇÃO DO OUTRO LADO
+	@ManyToMany(mappedBy = "categories")
+	@JsonIgnore
 	private Set<Product> products = new HashSet<>();
 	
 	public Category() {

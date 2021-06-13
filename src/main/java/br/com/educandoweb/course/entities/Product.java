@@ -8,8 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 @Entity
 @Table(name = "tb_product")
@@ -25,8 +27,14 @@ public class Product implements Serializable{
 	private Double price;
 	private String imgUrl;
 	
-	//@ManyToOne
-	@Transient
+	// DEFINIÇÃO DA LIGAÇÃO MUITOS PARA MUITOS * -> 1..* 
+	// UTILIZAR SOMENTE DE 1 LADO ( QUALQUER UM )
+	// UTILIZAR O joinColumns = @JoinColumn(name= "xxx") PARA CRIAR A CHAVE ESTRANGEIRA
+	// UTILIZAR inverseJoinColumns = @JoinColumn(name = "yyy") PARA CRIAR A CHAVE ESTRANGEIRA DO  OUTRO LADO
+	@ManyToMany
+	@JoinTable(name = "tb_product_category",
+	joinColumns = @JoinColumn(name = "product_id"),
+	inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private Set<Category> categories = new HashSet<>();
 	
 	public Product() {
