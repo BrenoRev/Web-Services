@@ -36,6 +36,20 @@ public class UserService{
 	
 	// DELETE DO BANCO DE DADOS O USUARIO
 	public void delete(Long id) {
-		repository.deleteById(id);
+		 repository.deleteById(id);
+	}
+	
+	//ATUALIZAR UM USUARIO
+	public User update(Long id, User obj) {
+		User entity = repository.getOne(id);
+		updateData(entity, obj);
+		return repository.save(entity);
+	}
+
+	// METODO RESPONSAVEL PELA ATUALIZACAO DAS INFORMAÇÕES
+	private void updateData(User entity, User obj) {
+		entity.setName(obj.getName());
+		entity.setEmail(obj.getEmail());
+		entity.setPhone(obj.getPhone());
 	}
 }
