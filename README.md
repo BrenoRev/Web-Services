@@ -1,6 +1,7 @@
-# Web-Services-Project-Course
-# BACK END PROEJCT
-Tecnologies : SpringBoot, ApacheTomcat, Maven, Postman, H2-Database
+# DATABASE ACESS'S PROJECT [ ONLY BACK-END ]
+
+<h3>Tecnologies : SpringBoot, ApacheTomcat, Maven, Postman, H2-Database</h3>
+
 # DEMONSTRATION
 <h3>
 http://databaserequests.herokuapp.com/
