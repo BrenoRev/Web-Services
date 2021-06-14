@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.educandoweb.course.entities.User;
 import br.com.educandoweb.course.repositories.UserRepository;
+import br.com.educandoweb.course.services.exceptions.ResourceNotFoundException;
 
 // SERVE COMO INTERMEDIADOR DO CONTROLLER COM O USUARIO
 
@@ -26,7 +27,8 @@ public class UserService{
 	// BUSCA O USUARIO POR ID
 	public User findById(Long id) {
 		Optional<User> obj= repository.findById(id);
-		return obj.get();
+		// VERIFICA SE PODE RETORNAR O OBJETO ENCONTRADO, CASO NÃO, RETORNA A EXCEÇÃO PERSONALIZADA
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
 	// SALVA NO BANCO DE DADOS UM USUARIO
