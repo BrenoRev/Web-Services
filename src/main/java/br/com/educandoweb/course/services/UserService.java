@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import br.com.educandoweb.course.entities.User;
 import br.com.educandoweb.course.repositories.UserRepository;
+import br.com.educandoweb.course.services.exceptions.DatabaseException;
 import br.com.educandoweb.course.services.exceptions.ResourceNotFoundException;
 
 // SERVE COMO INTERMEDIADOR DO CONTROLLER COM O USUARIO
@@ -38,7 +41,17 @@ public class UserService{
 	
 	// DELETE DO BANCO DE DADOS O USUARIO
 	public void delete(Long id) {
+		try {
 		 repository.deleteById(id);
+		}catch(EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException(id);
+		}catch(DataIntegrityViolationException e) {
+			throw new DatabaseException(e.getMessage());
+		}
+		/* FAZER ISSO PARA VERIFICAR QUAL A EXCEÇÃO ESTÁ DANDO PARA PODER TRATAR
+		 catch(RuntimeException e) {
+			e.printStackTrace();
+		}*/
 	}
 	
 	//ATUALIZAR UM USUARIO
