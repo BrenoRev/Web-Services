@@ -2,6 +2,8 @@ package br.com.educandoweb.course.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,9 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.educandoweb.course.entities.enums.OrderStatus;
 
@@ -29,14 +33,18 @@ public class Order implements Serializable {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant moment;
 
+
+	// ENUM POR NUMERO
+	private Integer orderStatus;
+	
 	// LIGAÇÃO MUITOS PARA UM * -> 1
 	@ManyToOne
 	// CRIAÇÃO DA CHAVE ESTRANGEIRA COM O NOME DE " client_id "
 	@JoinColumn(name = "client_id")
 	private User client;
-
-	// ENUM POR NUMERO
-	private Integer orderStatus;
+	
+	@OneToMany(mappedBy = "id.order")
+	private Set<OrderItem> items = new HashSet<>();
 	
 	public Order() {
 
@@ -52,6 +60,9 @@ public class Order implements Serializable {
 		setOrderStatus(orderStatus);
 	}
 
+	public Set<OrderItem> getItems(){
+		return items;
+	}
 	
 	// ENUM POR NUMERO
 	public OrderStatus getOrderStatus() {
