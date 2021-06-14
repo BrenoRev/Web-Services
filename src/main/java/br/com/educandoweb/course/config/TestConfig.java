@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import br.com.educandoweb.course.entities.Category;
 import br.com.educandoweb.course.entities.Order;
 import br.com.educandoweb.course.entities.OrderItem;
+import br.com.educandoweb.course.entities.Payment;
 import br.com.educandoweb.course.entities.Product;
 import br.com.educandoweb.course.entities.User;
 import br.com.educandoweb.course.entities.enums.OrderStatus;
@@ -97,5 +98,12 @@ public class TestConfig implements CommandLineRunner {
 		orderItemRepository.save(oi2);
 		orderItemRepository.save(oi3);
 		orderItemRepository.save(oi4);
+		
+		// MODO DE INSERIR DADOS DE UMA ASSOACIAÇÃO 1 PARA 1
+		Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+		o1.setPayment(pay1);
+		orderRepository.save(o1);
+		
+		
 	}
 }
