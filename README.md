@@ -17,6 +17,3 @@ https://www.youtube.com/watch?v=wj-m35UV1zY
 # PROJECT WITH THE PURPOSE OF INSERTION IN THE DATABASE
 
 ![image](https://user-images.githubusercontent.com/84048306/121856423-ddb4b600-ccca-11eb-9b26-61451e6197e8.png)
-
-# DATABASE
-![image](https://user-images.githubusercontent.com/84048306/121858686-3e44f280-cccd-11eb-9b50-ce6839efd086.png)
