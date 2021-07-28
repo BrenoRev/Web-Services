@@ -12,7 +12,7 @@
            <li>JPA / Hibernate ( ORM ) </li>
            <li>Gradle</li>
            <li>Tomcat v10.0</li>
-            <li>Banco de dados MongoDB</li>
+            <li>Banco de dados H2</li>
         </ul>
 
 <h3> Demonstração do projeto em vídeo </h3>
