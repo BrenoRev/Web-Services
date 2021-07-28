@@ -1,4 +1,4 @@
- # Banco de dados NoSQL [ Back-End Project]
+ # Banco de dados H2 [ Back-End Project]
  ㅤ 
        <p>Projeto feito no curso de Java do Nélio Alves com o foco no aprendizado de novas tecnologias.</p>
         <p>Padrão de construção Model, View and Controller ( MVC )</p>
